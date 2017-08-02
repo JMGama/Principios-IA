@@ -1,7 +1,7 @@
 # Puzle Lineal con busqueda en amplitud
 from arbol import Nodo
 
-def buscar_solucion_BFS(estado_inicial, solucion):
+def buscar_solucion_DFS(estado_inicial, solucion):
 	solucionado = False
 	nodos_visitados = []
 	nodos_frontera = []
@@ -17,14 +17,14 @@ def buscar_solucion_BFS(estado_inicial, solucion):
 			return nodo
 		else:
 			# expandir nodos hijo
-			dato_nodo = nodo.get_datos() 
+			dato_nodo = nodo.get_datos()
 
 			# operador izquierdo
 			hijo = [dato_nodo[1], dato_nodo[0], dato_nodo[2], dato_nodo[3]]
 			hijo_izquierdo = Nodo(hijo)
 			if not hijo_izquierdo.en_lista(nodos_visitados) and not hijo_izquierdo.en_lista(nodos_frontera):
 				nodos_frontera.append(hijo_izquierdo)
-			# operador central
+			#operador central
 			hijo =  [dato_nodo[0], dato_nodo[2], dato_nodo[1], dato_nodo[3]]
 			hijo_central = Nodo(hijo)
 			if not hijo_central.en_lista(nodos_visitados) and not hijo_central.en_lista(nodos_frontera):
@@ -40,7 +40,7 @@ def buscar_solucion_BFS(estado_inicial, solucion):
 if __name__ == '__main__':
 	estado_inicial = [4,2,3,1]
 	solucion = [1,2,3,4]
-	nodo_solucion = buscar_solucion_BFS(estado_inicial, solucion)
+	nodo_solucion = buscar_solucion_DFS(estado_inicial, solucion)
 	# mostrar resultado
 	resultado = []
 	nodo = nodo_solucion
