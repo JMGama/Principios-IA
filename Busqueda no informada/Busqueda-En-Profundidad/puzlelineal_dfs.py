@@ -1,4 +1,4 @@
-# Puzle Lineal con busqueda en amplitud
+# Puzle Lineal con busqueda en profundidad
 from arbol import Nodo
 
 def buscar_solucion_DFS(estado_inicial, solucion):
@@ -8,7 +8,7 @@ def buscar_solucion_DFS(estado_inicial, solucion):
 	nodoInicial = Nodo(estado_inicial)
 	nodos_frontera.append(nodoInicial)
 	while (not solucionado) and len(nodos_frontera) != 0:
-		nodo = nodos_frontera.pop(0)
+		nodo = nodos_frontera.pop()
 		# extraer nodo y anadirlo a visitados
 		nodos_visitados.append(nodo)
 		if nodo.get_datos() == solucion:
@@ -24,7 +24,7 @@ def buscar_solucion_DFS(estado_inicial, solucion):
 			hijo_izquierdo = Nodo(hijo)
 			if not hijo_izquierdo.en_lista(nodos_visitados) and not hijo_izquierdo.en_lista(nodos_frontera):
 				nodos_frontera.append(hijo_izquierdo)
-			#operador central
+			# operador central
 			hijo =  [dato_nodo[0], dato_nodo[2], dato_nodo[1], dato_nodo[3]]
 			hijo_central = Nodo(hijo)
 			if not hijo_central.en_lista(nodos_visitados) and not hijo_central.en_lista(nodos_frontera):

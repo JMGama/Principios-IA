@@ -43,7 +43,7 @@ class Nodo:
 		en_la_lista = False
 		for n in lista_nodos:
 			if self.igual(n):
-				en_lista = True
+				en_la_lista = True
 		return en_la_lista
 
 	def __str__(self):
