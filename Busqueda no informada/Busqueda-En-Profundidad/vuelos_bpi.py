@@ -11,7 +11,7 @@ def DFS_prof_iter(nodo, solucion):
 def buscar_solucion_DFS_Rec(nodo, solucion, visitados, limite):
 	if limite > 0:
 		visitados.append(nodo)
-		if nodo.get_datos == solucion:
+		if nodo.get_datos() == solucion:
 			return nodo
 		else:
 			# expandir nodos hijo (ciudades con conexiones)
@@ -48,7 +48,7 @@ if __name__ == '__main__':
 	}
 	estado_inicial = 'Malaga'
 	solucion = 'Santiago'
-	nodo_inicial = Nodo(nodo_inicial, solucion)
+	nodo_inicial = Nodo(estado_inicial)
 	nodo = DFS_prof_iter(nodo_inicial, solucion)
 
 	# mostrar solucion
