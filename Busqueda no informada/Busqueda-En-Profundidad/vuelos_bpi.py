@@ -32,3 +32,33 @@ def buscar_solucion_DFS_Rec(nodo, solucion, visitados, limite):
 						return sol
 
 		return None
+
+if __name__ == '__main__':
+	conexiones = {
+	'Malaga' : {'Salamanca', 'Madrid', 'Barcelona'},
+	'Sevilla' : {'Santiago', 'Madrid'},
+	'Granada' : {'Valencia'},
+	'Valencia' : {'Barcelona'},
+	'Madrid' : {'Salamanca', 'Sevilla', 'Malaga', 'Barcelona', 'Santander'},
+	'Salamanca' : {'Malaga', 'Madrid'},
+	'Santiago' : {'Sevilla', 'Santander', 'Barcelona'},
+	'Santander' : {'Santiago', 'Madrid'},
+	'Zaragoza' : {'Barcelona'},
+	'Barcelona' : {'Zaragoza', 'Santiago', 'Madrir', 'Malaga', 'Valencia'}
+	}
+	estado_inicial = 'Malaga'
+	solucion = 'Santiago'
+	nodo_inicial = Nodo(nodo_inicial, solucion)
+	nodo = DFS_prof_iter(nodo_inicial, solucion)
+
+	# mostrar solucion
+	if nodo != None:
+		resultado = []
+		while nodo.get_padre() != None:
+			resultado.append(nodo.get_datos())
+			nodo = nodo.get_padre()
+		resultado.append(estado_inicial)
+		resultado.reverse()
+		print resultado
+	else:
+		print "solucion no encontrada"
